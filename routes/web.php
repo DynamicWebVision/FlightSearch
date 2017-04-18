@@ -30,6 +30,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
+    Route::get('two_flights', 'FlightController@processTwoFlights');
+
 });
 
 
@@ -52,4 +54,3 @@ Route::get('flight_options', 'FlightController@flightOptions');
 Route::get('processTrips', 'FlightController@processFlights');
 
 
-Route::get('ten_flights', 'FlightController@processTenFlights');

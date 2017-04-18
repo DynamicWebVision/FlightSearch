@@ -24,7 +24,7 @@ class FlightController extends Controller {
         $this->utility = new Utility();
     }
 
-    public function processTenFlights() {
+    public function processTwoFlights() {
         Log::info("START: Process Ten Flights");
 
         $trips = Trip::orderBy('last_processed')

@@ -26,6 +26,8 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+        $schedule->call('App\Http\Controllers\FlightController@processTwoFlights')->hourly();
+        $schedule->call('App\Http\Controllers\FlightController@processTwoFlights')->daily();
     }
 
     /**
