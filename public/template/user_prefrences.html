@@ -1,0 +1,115 @@
+<form name="up.trip_preferences_form" class="form-horizontal" novalidate ng-submit="up.updateFlightPreferences()">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="panel panel-primary">
+                <div class="panel-heading ">
+                    <h3 class="panel-title">New Flight Search</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="panel-body">
+                            <!--Item Menu Type START-->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Name</label>
+                                <div class="col-md-9 m-t-10">
+                                    <input type="text" class="input-med form-control" name="search_name" ng-required="true"
+                                           ng-model="up.userTravelPreferences.searchName" ng-fade>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="alert alert-danger ng-hide alert-reg-position"
+                                         ng-show="up.trip_preferences_form.search_name.$error.required
+                                         && (up.trip_preferences_form.search_name.$faded || up.userTravelPreferences.submit)"
+                                         role="alert">
+                                        Search Name is required.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Departure Airport</label>
+                                <div class="col-md-9 m-t-10">
+                                    <input type="text" class="input-med form-control" name="departure_airport" ng-required="true"
+                                           ng-model="up.userTravelPreferences.departureAirport" ng-fade max-length="3" placeholder="3 Letter Airport Code">
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="alert alert-danger ng-hide alert-reg-position"
+                                         ng-show="up.trip_preferences_form.departure_airport.$error.required
+                                         && (up.trip_preferences_form.departure_airport.$faded || up.userTravelPreferences.submit)"
+                                         role="alert">
+                                        Search Name is required.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Trip Type/Length</label>
+                                <div class="col-md-9 m-t-10">
+                                    <select name="modifier_group" class="form-control input-med"
+                                            ng-model="up.userTravelPreferences.travelPreferenceId" ng-fade
+                                            ng-options="travel_length.id as travel_length.name for travel_length in up.travelPreferences">
+                                        <option class="placeholder-color" value="" selected disabled>SELECT TYPE</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="alert alert-danger ng-hide alert-reg-position"
+                                         ng-show="modifier_item.modifier_item_form.modifier_group.$error.required
+                                         && (modifier_item.modifier_item_form.modifier_group.$faded || modifier_item.current_mod_item.submit)"
+                                         role="alert">
+                                        Modifier Group is required.
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Item Menu Type END-->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Airport Search</label>
+                                <div class="col-md-3 m-t-10">
+                                    <input type="text" class="input-med form-control" name="airport_filter" ng-required="true"
+                                           ng-model="up.airportFilter" ng-fade>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="inline m-l-10" ng-repeat="airport in up.airports | filter: up.filterAirports">
+                                        <button class="btn btn-primary m-t-10 m-l-10" type="button"  ng-click="up.addAirport(airport)" >
+                                            <span class="badge">+</span> {{airport.airport_code}} {{airport.city}}, {{airport.country}}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="col-md-12"><hr></div>
+                                <div class="form-group">
+
+                                    <label class="col-md-3 control-label">Selected Airports:</label>
+                                    <div class="col-md-3 m-t-10">
+                                        <div class="inline m-l-10" ng-repeat="selectedAirport in up.userTravelPreferences.airports">
+                                            <button class="btn btn-success m-t-10 m-l-10" type="button"  ng-click="up.removeAirport(selectedAirport)" >
+                                                <span class="badge">-</span> {{selectedAirport.airport_code}} {{selectedAirport.city}}, {{selectedAirport.country}}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h4>Trip Window</h4>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Start Date</label>
+                                <div class="col-md-3 m-t-10">
+                                    <input type="text" class="input-med form-control" name="airport_filter" ng-required="true"
+                                           ng-model="up.userTravelPreferences.startDate" ng-fade placeholder="mm/dd/yyyy">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">End Date</label>
+                                <div class="col-md-3 m-t-10">
+                                    <input type="text" class="input-med form-control" name="airport_filter" ng-required="true"
+                                           ng-model="up.userTravelPreferences.endDate" ng-fade placeholder="mm/dd/yyyy">
+                                </div>
+                            </div>
+
+                        </div>
+                        <button class="btn btn-success btn-lg pull-right m-t-15">Create Travel Search</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
